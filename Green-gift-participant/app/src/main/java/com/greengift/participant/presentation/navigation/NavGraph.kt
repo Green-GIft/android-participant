@@ -6,6 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.greengift.participant.presentation.view.festival.FestivalScreen
+import com.greengift.participant.presentation.view.festival_join.FestivalJoinScreen
+import com.greengift.participant.presentation.view.festival_result.FestivalResultScreen
 import com.greengift.participant.presentation.view.gift.GiftScreen
 import com.greengift.participant.presentation.view.login.LoginScreen
 import com.greengift.participant.presentation.view.my_gift.MyGiftScreen
@@ -36,6 +38,9 @@ fun NavGraphBuilder.greenGraph(
     composable(route = Screen.SplashScreen.route){
         SplashScreen(navController)
     }
+    composable(route = Screen.FestivalJoinScreen.route){
+        FestivalJoinScreen(navController)
+    }
     composable(
         route = Screen.FestivalResultScreen.route+ "?festivalId={festivalId}",
         arguments = listOf(
@@ -45,7 +50,7 @@ fun NavGraphBuilder.greenGraph(
             },
         )
     ){
-        FestivalScreen(navController)
+        FestivalResultScreen(navController)
     }
 
 }
