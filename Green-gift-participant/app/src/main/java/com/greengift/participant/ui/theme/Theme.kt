@@ -10,11 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
-    background = Color.Black,
-    surface = Color.White,
-    outline = gray4,
-    outlineVariant = gray3,
-    primary = gray4
+    background = Color.White,
+    surface = Color.Black,
+    outline = gray1,
+    outlineVariant = gray4,
+    primary = gray2
 )
 
 private val LightColorScheme = lightColorScheme(
