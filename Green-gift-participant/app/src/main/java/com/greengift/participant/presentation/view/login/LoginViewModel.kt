@@ -22,7 +22,7 @@ class LoginViewModel @Inject constructor(
     private val loginUseCase: Login
 ): ViewModel() {
 
-    private val _loginDTO = mutableStateOf(LoginDTO("", ""))
+    private val _loginDTO = mutableStateOf(LoginDTO())
     val loginDTO = _loginDTO
 
     private val _eventFlow = MutableSharedFlow<GreenGiftEvent>()

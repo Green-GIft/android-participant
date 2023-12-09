@@ -17,7 +17,7 @@ class SignupViewModel @Inject constructor(
     private val signupUseCase: SignUp
 ): ViewModel() {
 
-    private val _signupDTO = mutableStateOf(SignupDTO("", "", "", "", "participant"))
+    private val _signupDTO = mutableStateOf(SignupDTO().copy(role = "participant"))
     val signupDTO = _signupDTO
 
     private val _eventFlow = MutableSharedFlow<GreenGiftEvent>()

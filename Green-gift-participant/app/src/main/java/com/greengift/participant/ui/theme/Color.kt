@@ -2,6 +2,7 @@ package com.greengift.participant.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val main_pink = Color(0xFFF7D0D1)
 val main_yellow = Color(0xFFFDC700)
 val main_green = Color(0xFF016241)
 
