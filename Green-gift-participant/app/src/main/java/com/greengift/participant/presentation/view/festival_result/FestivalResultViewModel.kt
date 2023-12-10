@@ -33,7 +33,8 @@ class FestivalResultViewModel @Inject constructor(
                         _state.value = _state.value.copy(
                             isEmpty = (response.data != null),
                             festivalResult = response.data,
-                            error = ""
+                            error = "",
+                            isLoading = false
                         )
                     }
                     is Resource.Error -> {

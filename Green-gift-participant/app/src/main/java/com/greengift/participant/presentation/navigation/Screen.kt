@@ -7,6 +7,6 @@ sealed class Screen (val route: String){
     object FestivalScreen: Screen("festival_screen")
     object FestivalResultScreen: Screen("festival_result_screen")
     object GiftScreen: Screen("gift_screen")
-    object MyGiftScreen: Screen("my_gift_screen")
+    object ProductScreen: Screen("product_screen")
     object FestivalJoinScreen: Screen("festival_join_screen")
 }
