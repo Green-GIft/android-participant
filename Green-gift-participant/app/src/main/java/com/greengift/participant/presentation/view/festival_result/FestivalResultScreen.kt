@@ -72,7 +72,7 @@ fun FestivalResultScreen(
     }
     else {
         Image(
-            painter = painterResource(id = R.drawable.wrong_page),
+            painter = painterResource(id = R.drawable.not_finished_festival),
             contentDescription = "wrong page",
             modifier = Modifier.fillMaxSize()
         )

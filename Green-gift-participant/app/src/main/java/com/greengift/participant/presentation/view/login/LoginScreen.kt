@@ -43,6 +43,7 @@ fun LoginScreen(
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is GreenGiftEvent.LOGIN -> {
+                    navController.popBackStack()
                     navController.navigate(Screen.FestivalScreen.route)
                 }
                 is GreenGiftEvent.ERROR -> {
