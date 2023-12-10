@@ -3,13 +3,16 @@ package com.greengift.participant.di
 import android.content.Context
 import android.util.Log
 import com.greengift.participant.data.api.FestivalApi
+import com.greengift.participant.data.api.ProductApi
 import com.greengift.participant.data.api.UserApi
 import com.greengift.participant.data.repository.FestivalRepositoryImpl
+import com.greengift.participant.data.repository.ProductRepositoryImpl
 import com.greengift.participant.data.repository.UserRepositoryImpl
 import com.greengift.participant.data.util.GreenDataStore
 import com.greengift.participant.data.util.HttpRoutes
 import com.greengift.participant.data.util.TOKEN_KEY
 import com.greengift.participant.domain.repository.FestivalRepository
+import com.greengift.participant.domain.repository.ProductRepository
 import com.greengift.participant.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -95,5 +98,16 @@ class NetworkModule {
     @Singleton
     fun provideFestivalRepositoryImpl(festivalApi: FestivalApi): FestivalRepositoryImpl {
         return FestivalRepositoryImpl(festivalApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductRepository(client: HttpClient): ProductRepository {
+        return ProductApi(client)
+    }
+    @Provides
+    @Singleton
+    fun provideProductRepositoryImpl(productApi: ProductApi): ProductRepositoryImpl {
+        return ProductRepositoryImpl(productApi)
     }
 }
