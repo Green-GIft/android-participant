@@ -1,6 +1,5 @@
 package com.greengift.participant.presentation.view.festival_result
 
-import android.graphics.BitmapFactory
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -18,8 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -30,11 +27,11 @@ import androidx.navigation.NavController
 import com.greengift.participant.R
 import com.greengift.participant.data.dto.FestivalResultDTO
 import com.greengift.participant.presentation.component.GreenButton
+import com.greengift.participant.data.util.ImageConverter
+import com.greengift.participant.presentation.component.GreenIndicator
 import com.greengift.participant.presentation.navigation.Screen
-import com.greengift.participant.presentation.view.festival.MY_IMAGE
 import com.greengift.participant.ui.theme.main_green
 import com.greengift.participant.ui.theme.typography
-import java.util.Base64
 
 @Composable
 fun FestivalResultScreen(
@@ -45,9 +42,10 @@ fun FestivalResultScreen(
     val value = viewModel.state.value
     val text = if (value.isEmpty) "축하드려요!\n선물에 당첨되셨어요" else "아쉽지만 당첨이 되지 않았어요\n대신 마일리지 10P를 드릴게요!"
     val buttonText = if (value.isEmpty) "선물함으로 이동하기" else "메인으로"
-    val buttonClick = if (value.isEmpty) Screen.MyGiftScreen.route else Screen.FestivalScreen.route
+    val buttonClick = if (value.isEmpty) Screen.GiftScreen.route else Screen.FestivalScreen.route
 
-    if (value.error.isBlank()){
+    if (value.isLoading){ GreenIndicator() }
+    else if (value.error.isBlank()){
         Box(
             modifier = Modifier.padding(vertical = 50.dp, horizontal = 40.dp)
         ){
@@ -95,16 +93,6 @@ fun MileageResult(modifier: Modifier = Modifier) {
 fun GiftResult(
     festivalResult: FestivalResultDTO = FestivalResultDTO()
 ) {
-    var decoded: ByteArray
-    var bitmap: ImageBitmap
-    try {
-        decoded = Base64.getDecoder().decode(festivalResult.image)
-        bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size).asImageBitmap()
-    } catch(e: Exception){
-        decoded = Base64.getDecoder().decode(MY_IMAGE)
-        bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size).asImageBitmap()
-    }
-
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(20.dp))
@@ -114,7 +102,7 @@ fun GiftResult(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Image(
-            bitmap = bitmap,
+            bitmap = ImageConverter().getImageBitmap(festivalResult.image),
             contentDescription = "gift_image",
             modifier = Modifier
                 .size(200.dp)

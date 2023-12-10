@@ -20,7 +20,7 @@ class Login @Inject constructor(
             val r2 = r.body<ApiUtils.ApiResult<String>>()
             when(r2.success) {
                 true -> { emit(Resource.Success(r.headers["Authorization"])) }
-                false -> { emit(Resource.Error(r2.error?.message ?: "Login: 예상하지 못한 에러입니다."))}
+                false -> { emit(Resource.Error(r2.error?.message ?: "예상하지 못한 에러입니다."))}
             }
         } catch(e: Exception){
             val error = GreenError().getErrorMessage(e)

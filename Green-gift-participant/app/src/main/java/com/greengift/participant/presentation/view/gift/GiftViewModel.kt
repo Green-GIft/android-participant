@@ -1,38 +1,32 @@
-package com.greengift.participant.presentation.view.festival_result
+package com.greengift.participant.presentation.view.gift
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.greengift.participant.domain.use_case.festival.GetFestivalResult
+import com.greengift.participant.domain.use_case.product.GetProductParticipant
 import com.greengift.participant.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FestivalResultViewModel @Inject constructor(
-    private val getFestivalResultUseCase: GetFestivalResult,
-    private val savedStateHandle: SavedStateHandle
+class GiftViewModel @Inject constructor(
+    private val getProductParticipantUseCase: GetProductParticipant
 ): ViewModel() {
-
-    private val festivalId = savedStateHandle.get<Long>("festivalId") ?: -1
-
-    private val _state = mutableStateOf(FestivalResultState())
+    private val _state = mutableStateOf(GiftState())
     val state = _state
 
     init {
-        getFestivalResult()
+        getMyGift()
     }
 
-    private fun getFestivalResult() {
+    private fun getMyGift() {
         viewModelScope.launch {
-            getFestivalResultUseCase(festivalId).collect {response ->
+            getProductParticipantUseCase().collect { response ->
                 when (response){
                     is Resource.Success -> {
                         _state.value = _state.value.copy(
-                            isEmpty = (response.data != null),
-                            festivalResult = response.data,
+                            giftList = response.data.let { it ?: emptyList() },
                             error = "",
                             isLoading = false
                         )

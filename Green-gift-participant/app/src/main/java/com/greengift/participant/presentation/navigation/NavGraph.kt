@@ -10,7 +10,7 @@ import com.greengift.participant.presentation.view.festival_join.FestivalJoinScr
 import com.greengift.participant.presentation.view.festival_result.FestivalResultScreen
 import com.greengift.participant.presentation.view.gift.GiftScreen
 import com.greengift.participant.presentation.view.login.LoginScreen
-import com.greengift.participant.presentation.view.my_gift.MyGiftScreen
+import com.greengift.participant.presentation.view.product.ProductScreen
 import com.greengift.participant.presentation.view.signup.SignupScreen
 import com.greengift.participant.presentation.view.splash.SplashScreen
 
@@ -23,11 +23,8 @@ fun NavGraphBuilder.greenGraph(
     composable (route = Screen.FestivalScreen.route){
         FestivalScreen(navController)
     }
-    composable(route = Screen.GiftScreen.route){
-        GiftScreen(navController)
-    }
-    composable(route = Screen.MyGiftScreen.route){
-        MyGiftScreen(navController)
+    composable(route = Screen.ProductScreen.route){
+        ProductScreen(navController)
     }
     composable(route = Screen.LoginScreen.route){
         LoginScreen(navController)

@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.greengift.participant.data.dto.LoginDTO
 import com.greengift.participant.data.util.GreenDataStore
-import com.greengift.participant.data.util.TOKEN_KEY
 import com.greengift.participant.domain.use_case.user.Login
 import com.greengift.participant.presentation.event.GreenGiftEvent
 import com.greengift.participant.util.Resource
-import com.greengift.participant.util.log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch

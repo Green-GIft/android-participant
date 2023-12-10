@@ -43,7 +43,7 @@ fun FestivalJoinScreen(
                 is GreenGiftEvent.ERROR -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
                 }
-                is GreenGiftEvent.LOADING -> {}
+                is GreenGiftEvent.LOADING -> {  }
                 else -> {}
             }
         }

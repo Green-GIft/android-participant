@@ -17,7 +17,7 @@ class GetGrade @Inject constructor(
             val r = repository.getGrade()
             when(r.success) {
                 true -> { emit(Resource.Success(r.response)) }
-                false -> { emit(Resource.Error(r.error?.message ?: "GetGrade: 예상하지 못한 에러입니다."))}
+                false -> { emit(Resource.Error(r.error?.message ?: "예상하지 못한 에러입니다."))}
             }
         } catch(e: Exception){
             val error = GreenError().getErrorMessage(e)
