@@ -33,6 +33,7 @@ import com.greengift.participant.R
 import com.greengift.participant.data.dto.FestivalAllDTO
 import com.greengift.participant.data.util.ImageConverter
 import com.greengift.participant.presentation.component.GiftNavigator
+import com.greengift.participant.presentation.component.GreenIndicator
 import com.greengift.participant.presentation.component.GreenTitle
 import com.greengift.participant.presentation.navigation.Screen
 import com.greengift.participant.ui.theme.gray2
@@ -47,6 +48,7 @@ fun FestivalScreen(
     navController: NavController,
     viewModel: FestivalViewModel = hiltViewModel()
 ){
+    if (viewModel.state.value.isLoading){ GreenIndicator() }
     Box(
         modifier = Modifier.fillMaxSize()
     ){

@@ -16,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.greengift.participant.R
 import com.greengift.participant.presentation.component.GreenDivider
+import com.greengift.participant.presentation.component.GreenIndicator
 import com.greengift.participant.presentation.component.GreenTitle
 
 @Composable
@@ -24,7 +25,8 @@ fun GiftScreen(
     viewModel: GiftViewModel = hiltViewModel()
 ){
     val context = LocalContext.current
-    if (viewModel.state.value.error.isNotBlank()){
+    if (viewModel.state.value.isLoading){ GreenIndicator() }
+    else if (viewModel.state.value.error.isNotBlank()){
         Image(
             painter = painterResource(id = R.drawable.wrong_page),
             contentDescription = "wrong page",

@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import com.greengift.participant.R
 import com.greengift.participant.presentation.component.GiftNavigator
 import com.greengift.participant.presentation.component.GreenDivider
+import com.greengift.participant.presentation.component.GreenIndicator
 import com.greengift.participant.presentation.component.GreenTitle
 import com.greengift.participant.presentation.event.GreenGiftEvent
 import com.greengift.participant.presentation.navigation.Screen
@@ -45,8 +46,8 @@ fun ProductScreen(
             }
         }
     }
-
-    if (viewModel.state.value.error.isNotBlank()){
+    if (viewModel.state.value.isLoading){ GreenIndicator() }
+    else if (viewModel.state.value.error.isNotBlank()){
         Image(
             painter = painterResource(id = R.drawable.wrong_page),
             contentDescription = "wrong page",

@@ -26,7 +26,6 @@ fun GreenTitle(
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
         )
         GreenDivider(modifier = Modifier.padding(top = 7.dp, bottom = 10.dp))

@@ -28,6 +28,7 @@ import com.greengift.participant.R
 import com.greengift.participant.data.dto.FestivalResultDTO
 import com.greengift.participant.presentation.component.GreenButton
 import com.greengift.participant.data.util.ImageConverter
+import com.greengift.participant.presentation.component.GreenIndicator
 import com.greengift.participant.presentation.navigation.Screen
 import com.greengift.participant.ui.theme.main_green
 import com.greengift.participant.ui.theme.typography
@@ -43,7 +44,8 @@ fun FestivalResultScreen(
     val buttonText = if (value.isEmpty) "선물함으로 이동하기" else "메인으로"
     val buttonClick = if (value.isEmpty) Screen.GiftScreen.route else Screen.FestivalScreen.route
 
-    if (value.error.isBlank()){
+    if (value.isLoading){ GreenIndicator() }
+    else if (value.error.isBlank()){
         Box(
             modifier = Modifier.padding(vertical = 50.dp, horizontal = 40.dp)
         ){
